@@ -1,9 +1,19 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
+from .models import *
+
+
+menu = ["О сайте", "Поиск машины", "Войти"]
+
 
 def index(request):
-    return HttpResponse("Страница приложения о машинах")
+    posts = Car.objects.all()
+    return render(request, 'cars/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
+
+
+def about(request):
+    return render(request, 'cars/about.html', {'title': 'О нашем сайте'})
 
 
 def names(request, car_name: str):

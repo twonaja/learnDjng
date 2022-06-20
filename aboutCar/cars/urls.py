@@ -4,6 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='main_page'),
+    path('about/', about, name='about'),
     path('names/<slug:car_name>/', names),
     re_path(r'^cars_by_years/(?P<year>[0-9]{4})/', cars_by_years)
 ]
